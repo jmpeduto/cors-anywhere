@@ -2,6 +2,9 @@
 var host = process.env.HOST || '0.0.0.0';
 // Listen on a specific port via the PORT environment variable
 var port = process.env.PORT || 8080;
+// const dotenv = require('dotenv');
+require('dotenv').config();
+
 
 // Grab the blacklist from the command-line so that we can update the blacklist without deploying
 // again. CORS Anywhere is open by design, and this blacklist is not used, except for countering
@@ -9,6 +12,10 @@ var port = process.env.PORT || 8080;
 // use originWhitelist instead.
 var originBlacklist = parseEnvList(process.env.CORSANYWHERE_BLACKLIST);
 var originWhitelist = parseEnvList(process.env.CORSANYWHERE_WHITELIST);
+console.log(`Your whitelist is ${process.env.CORSANYWHERE_WHITELIST}`); // undefined
+// console.log(process.env);
+
+
 function parseEnvList(env) {
   if (!env) {
     return [];
